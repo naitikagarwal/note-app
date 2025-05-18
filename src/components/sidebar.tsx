@@ -1,34 +1,40 @@
-import { useState } from 'react';
+import { ChevronLeft, ChevronRight, Plus, Folder as FolderIcon } from 'lucide-react';
 import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Folder, Search } from 'lucide-react';
 
+interface SidebarProps {
 
-export function Sidebar() {
-  const [searchQuery, setSearchQuery] = useState('');
+  collapsed: boolean;
+  toggleCollapse: () => void;
+}
 
-  // Filter notes based on search query
+export default function Sidebar({
 
+  collapsed,
+  toggleCollapse,
+}: SidebarProps) {
+  
 
+  
   return (
-    <aside className={`w-64 transition-all duration-300 border-r bg-white`}>
-      <div className="p-4 space-y-4">
-        <Button variant="ghost"  className="p-2">
-          <Folder className="h-5 w-5" />
+    <div className={`flex flex-col h-full border-r ${collapsed ? 'w-16' : 'w-64'}`}>
+      <div className="p-4 border-b flex justify-between items-center">
+        {!collapsed && <h2 className="font-bold">Notey</h2>}
+        <Button variant="ghost" size="icon" onClick={toggleCollapse} className='cursor-pointer'>
+          {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
         </Button>
-        
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-          <Input
-            placeholder="Search notes..."
-            className="pl-10"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-        
-        {/* Render folders and notes here */}
       </div>
-    </aside>
+      
+      <div className="p-2">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="w-full mb-2 cursor-pointer"
+        >
+          <Plus size={14} className="" />
+          {!collapsed && "New Page"}
+        </Button>
+      </div>
+      
+    </div>
   );
 }
