@@ -2,7 +2,8 @@ import './App.css'
 import Sidebar from './components/sidebar'
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { v4 as uuidv4 } from 'uuid';
-import type { AppData, Page } from './types/types';
+import type { AppData, Folder, Page } from './types/types';
+import Editor from './components/Editor';
 
 function App() {
 
@@ -56,6 +57,35 @@ function App() {
     });
   };
 
+    const createFolder = () => {
+    const newFolder: Folder = {
+      id: uuidv4(),
+      name: 'New Folder',
+      pages: [],
+      createdAt: Date.now(),
+    };
+    
+    const newData: AppData = {
+      ...data,
+      folders: {
+        ...data.folders,
+        [newFolder.id]: newFolder,
+      },
+    };
+    
+    saveData(newData);
+  };
+
+  const updatePage = (page: Page) => {
+    const newData: AppData = {
+      ...data,
+      pages: {
+        ...data.pages,
+        [page.id]: page,
+      },
+    };
+    saveData(newData);
+  };
     const selectFolder = (folderId: string) => {
     saveData({
       ...data,
@@ -77,8 +107,9 @@ function App() {
   };
 
   return (
-    <>
-      <Sidebar 
+    <div className="flex h-screen">
+      <div className={`flex flex-col border-r ${data.settings.sidebarCollapsed ? 'w-16' : 'w-64'}`}>
+        <Sidebar 
         folders={Object.values(data.folders)}
         pages={data.pages}
         collapsed={data.settings.sidebarCollapsed} 
@@ -89,7 +120,16 @@ function App() {
         activePageId={data.settings.activePage}
         activeFolderId={data.settings.activeFolder}
       />
-    </>
+      </div>
+      <div className="flex-1 overflow-auto">
+        <Editor
+          activePage={activePage}
+          updatePage={updatePage}
+          createFolder={createFolder}
+        />
+      </div>
+      
+    </div>
   )
 }
 
