@@ -1,7 +1,8 @@
-import { Bold, Italic} from 'lucide-react';
+import { Bold, FolderPlus, Italic} from 'lucide-react';
 // import { Button } from './ui/button';
 import { Toggle } from './ui/toggle';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
+import { Button } from './ui/button';
 
 interface ToolbarProps {
   onBold: () => void;
@@ -51,6 +52,19 @@ export default function Toolbar({
           </Toggle>
         </TooltipTrigger>
         <TooltipContent>Italic (Ctrl+I)</TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onCreateFolder}
+          >
+            <FolderPlus className="h-4 w-4" />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>New Folder</TooltipContent>
       </Tooltip>
 
 
