@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import type { AppData, Page } from '../types/types';
-import Toolbar from './Toolbar';
+// import Toolbar from './Toolbar';
+import TiptapEditor from './TiptapEditor';
 
 interface EditorProps {
   activePage: Page | null;
@@ -43,14 +44,6 @@ export default function Editor({ activePage, updatePage, createFolder }: EditorP
 
   return (
     <div className="flex-1 flex flex-col h-full ">
-      <Toolbar
-        onBold={() => handleFormat('bold')}
-        onItalic={() => handleFormat('italic')}
-        onCreateFolder={createFolder}
-        disabled={!activePage}
-        isBoldActive={isBold}
-        isItalicActive={isItalic}
-      />
       
       {activePage ? (
         <>
@@ -65,19 +58,16 @@ export default function Editor({ activePage, updatePage, createFolder }: EditorP
             className="text-2xl font-bold p-4 border-b"
             placeholder="Title"
           />
-          
-          <input
-            type="text"
-            value={activePage.content}
-            onChange={(e) => updatePage({
+      <TiptapEditor
+        content={content}
+        onChange={(newContent: string) => updatePage({
               ...activePage,
-              content: e.target.value,
+              content: newContent,
               updatedAt: Date.now(),
             })}
-            className="p-4 overflow-auto focus:outline-none"
-            placeholder="Content"
-          />
-          
+        
+      />
+
         </>
       ) : (
         <div className="flex-1 flex items-center justify-center text-gray-500">
