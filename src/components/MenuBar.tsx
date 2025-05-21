@@ -22,7 +22,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
           <Toggle
             size="sm"
             onClick={() => editor.chain().focus().toggleBold().run()}
-            className={editor.isActive('bold') ? 'is-active' : ''}
+            className={`p-2 mx-1 rounded ${editor.isActive('bold') ? 'bg-blue-100 text-neutral-800' : 'hover:bg-gray-100'}`}
             aria-label="Toggle Bold"
           >
             <Bold className="h-4 w-4" />
@@ -36,7 +36,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
           <Toggle
             size="sm"
             onClick={() => editor.chain().focus().toggleItalic().run()}
-            className={editor.isActive('italic') ? 'is-active' : ''}
+            className={`p-2 mx-1 rounded ${editor.isActive('italic') ? 'bg-blue-100 text-neutral-800' : 'hover:bg-gray-100'}`}
             aria-label="Toggle Italic"
           >
             <Italic className="h-4 w-4" />
@@ -50,7 +50,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
           <Toggle
             size="sm"
             onClick={() => editor.chain().focus().toggleUnderline().run()}
-            className={`p-2 rounded ${editor.isActive('underline') ? 'bg-blue-100 text-neutral-800' : 'hover:bg-gray-100'}`}
+            className={`p-2 mx-1 rounded ${editor.isActive('underline') ? 'bg-blue-100 text-neutral-800' : 'hover:bg-gray-100'}`}
             aria-label="Toggle Underline"
           >
             <Underline className="h-4 w-4" />
@@ -64,7 +64,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
           <Toggle
             size="sm"
             onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-            className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+            className={`p-2 mx-1 rounded ${editor.isActive('heading', { level: 1 }) ? 'bg-blue-100 text-neutral-800' : 'hover:bg-gray-100'}`}
             aria-label="Toggle H1"
           >
             <Heading1 className="h-4 w-4" />
@@ -78,7 +78,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
           <Toggle
             size="sm"
             onClick={() => editor.chain().focus().toggleBulletList().run()}
-            className={editor.isActive('bulletList') ? 'is-active' : ''}
+            className={`p-2 mx-1 rounded ${editor.isActive('bulletList') ? 'bg-blue-100 text-neutral-800' : 'hover:bg-gray-100'}`}
             aria-label="Toggle Bullet"
           >
             <List className="h-4 w-4" />
@@ -92,7 +92,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
           <Toggle
             size="sm"
             onClick={() => editor.chain().focus().toggleOrderedList().run()}
-            className={editor.isActive('orderedList') ? 'is-active' : ''}
+            className={`p-2 mx-1 rounded ${editor.isActive('orderedList') ? 'bg-blue-100 text-neutral-800' : 'hover:bg-gray-100'}`}
             aria-label="Toggle Bullet"
           >
             <ListOrdered className="h-4 w-4" />
