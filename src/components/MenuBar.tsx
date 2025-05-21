@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bold, Italic,Heading1, List, ListOrdered} from 'lucide-react';
+import { Bold, Italic,Heading1, List, ListOrdered, Underline} from 'lucide-react';
 // import { Button } from './ui/button';
 import { Toggle } from './ui/toggle';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
@@ -42,7 +42,21 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
             <Italic className="h-4 w-4" />
           </Toggle>
         </TooltipTrigger>
-        <TooltipContent>Italic (Ctrl+I)</TooltipContent>
+        <TooltipContent>Italic </TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Toggle
+            size="sm"
+            onClick={() => editor.chain().focus().toggleUnderline().run()}
+            className={`p-2 rounded ${editor.isActive('underline') ? 'bg-blue-100 text-neutral-800' : 'hover:bg-gray-100'}`}
+            aria-label="Toggle Underline"
+          >
+            <Underline className="h-4 w-4" />
+          </Toggle>
+        </TooltipTrigger>
+        <TooltipContent>Underline </TooltipContent>
       </Tooltip>
 
       <Tooltip>

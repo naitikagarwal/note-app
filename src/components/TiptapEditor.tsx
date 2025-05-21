@@ -2,6 +2,8 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import React, { useEffect } from 'react'
 import MenuBar from './MenuBar'
+import { Underline } from '@tiptap/extension-underline'
+
 
 interface TiptapProps {
   content?: string
@@ -12,6 +14,11 @@ const TiptapEditor: React.FC<TiptapProps> = ({ content = '', onChange }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      Underline.configure({
+        HTMLAttributes: {
+          class: 'underline',
+        },
+      }),
     ],
     content,
     onUpdate: ({ editor }) => {
