@@ -15,7 +15,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
   }
 
   return (
-    <div className="flex items-center gap-1 p-2 border-b">
+    <div className="flex items-center p-2 border-b sticky top-0 bg-background z-10">
 
       <Tooltip>
         <TooltipTrigger asChild>

@@ -33,7 +33,7 @@ const TiptapEditor: React.FC<TiptapProps> = ({ content = '', onChange }) => {
   }, [content, editor])
 
   return (
-    <div className="editor-container">
+    <div className="editor-container" >
       <MenuBar editor={editor} />
       <EditorContent editor={editor} className="tiptap-editor" />
     </div>

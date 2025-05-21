@@ -179,7 +179,6 @@ function App() {
         <Editor
           activePage={activePage}
           updatePage={updatePage}
-          createFolder={createFolder}
         />
       </div>
 
