@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { CalendarDays, Clock } from 'lucide-react';
-import type { AppData, Page } from '../types/types';
+import type { Page } from '../types/types';
 // import Toolbar from './Toolbar';
 import TiptapEditor from './TiptapEditor';
 import { format } from 'date-fns';

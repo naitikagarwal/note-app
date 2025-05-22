@@ -10,7 +10,7 @@ function App() {
   const { data, saveData } = useLocalStorage();
 
   const activePage = data.settings.activePage ? data.pages[data.settings.activePage] : null;
-  const activeFolder = data.settings.activeFolder ? data.folders[data.settings.activeFolder] : null;
+  // const activeFolder = data.settings.activeFolder ? data.folders[data.settings.activeFolder] : null;
 
   const createPage = (folderId?: string) => {
     const newPage: Page = {
